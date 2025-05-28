@@ -3,7 +3,7 @@ import copy
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from diffusion.DiffusionActor import DiffusionActor
+from DiffusionActor import DiffusionActor
 
 class TD3:
     def __init__(
