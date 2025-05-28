@@ -1,11 +1,11 @@
 import torch
 import numpy as np
 import pandas as pd
-from path_optimization_uav.enviroment import  Environment
+from enviroment import  Environment
 from diffusion.DiffusionActor import DiffusionActor
 from diffusion.Agent import TD3
-from path_optimization_uav.memory import ReplayBuffer
-from path_optimization_uav.model import DoubleCritic
+from memory import ReplayBuffer
+from model import DoubleCritic
 from numpy import random
 
 env = Environment()
