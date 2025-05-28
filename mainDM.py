@@ -2,8 +2,8 @@ import torch
 import numpy as np
 import pandas as pd
 from enviroment import  Environment
-from diffusion.DiffusionActor import DiffusionActor
-from diffusion.Agent import TD3
+from DiffusionActor import DiffusionActor
+from Agent import TD3
 from memory import ReplayBuffer
 from model import DoubleCritic
 from numpy import random
