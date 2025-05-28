@@ -1,14 +1,14 @@
 # diffusion_actor.py
 import torch
 import torch.nn as nn
-from diffusion.DiffusionMLP import DiffusionMLP
+from diffusion.DiffusionTransformer import DiffusionTransformer
 
 class DiffusionActor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action, diffusion_steps=10):
         super().__init__()
         self.max_action = max_action
         self.diffusion_steps = diffusion_steps
-        self.denoiser = DiffusionMLP(state_dim, action_dim)
+        self.denoiser = DiffusionTransformer(state_dim, action_dim)
 
     def forward(self, state):
         batch_size = state.size(0)
