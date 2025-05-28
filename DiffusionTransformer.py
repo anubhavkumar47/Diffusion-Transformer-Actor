@@ -5,6 +5,7 @@ from SinusoidalPosEmb import SinusoidalPosEmb
 class FeedForwardBlock(nn.Module):
     def __init__(self, dim, hidden_dim, dropout=0.1):
         super().__init__()
+        self.action_dim = action_dim
         self.net = nn.Sequential(
             nn.Linear(dim, hidden_dim),
             nn.GELU(),
