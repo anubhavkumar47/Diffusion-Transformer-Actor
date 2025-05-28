@@ -12,7 +12,7 @@ class DiffusionActor(nn.Module):
 
     def forward(self, state):
         batch_size = state.size(0)
-        action = torch.randn(batch_size, self.denoiser.net[-1].out_features).to(state.device)
+        action = torch.randn(batch_size, self.denoiser.action_dim).to(state.device)
 
         for t in reversed(range(self.diffusion_steps)):
             t_norm = torch.full((batch_size, 1), t / self.diffusion_steps, device=state.device)
