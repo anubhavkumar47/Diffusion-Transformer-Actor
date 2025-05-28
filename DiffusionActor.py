@@ -1,7 +1,7 @@
 # diffusion_actor.py
 import torch
 import torch.nn as nn
-from diffusion.DiffusionTransformer import DiffusionTransformer
+from DiffusionTransformer import DiffusionTransformer
 
 class DiffusionActor(nn.Module):
     def __init__(self, state_dim, action_dim, max_action, diffusion_steps=10):
