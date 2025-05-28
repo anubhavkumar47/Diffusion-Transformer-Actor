@@ -5,7 +5,7 @@ from SinusoidalPosEmb import SinusoidalPosEmb
 class FeedForwardBlock(nn.Module):
     def __init__(self, dim, hidden_dim, dropout=0.1):
         super().__init__()
-        self.action_dim = action_dim
+        
         self.net = nn.Sequential(
             nn.Linear(dim, hidden_dim),
             nn.GELU(),
@@ -31,6 +31,7 @@ class DiffusionTransformer(nn.Module):
         self, state_dim, action_dim, time_dim=32, hidden_dim=256, num_layers=6, num_heads=8, ff_hidden=512
     ):
         super().__init__()
+        self.action_dim = action_dim
         self.time_mlp = nn.Sequential(
             SinusoidalPosEmb(time_dim),
             nn.Linear(time_dim, hidden_dim),
