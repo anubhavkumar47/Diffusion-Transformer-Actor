@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from diffusion.SinusoidalPosEmb import SinusoidalPosEmb
+from SinusoidalPosEmb import SinusoidalPosEmb
 
 class FeedForwardBlock(nn.Module):
     def __init__(self, dim, hidden_dim, dropout=0.1):
