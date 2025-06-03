@@ -47,7 +47,7 @@ class TD3:
         action = self.actor(state)
         return action.cpu().data.numpy().flatten()
 
-      def train(self, replay_buffer, batch_size=256):
+    def train(self, replay_buffer, batch_size=256):
         self.total_it += 1
 
         # Sample from replay buffer
