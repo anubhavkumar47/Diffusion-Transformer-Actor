@@ -47,7 +47,7 @@ for episode in range(episodes):
     ep_reward, ep_energy, ep_aoi = 0, 0, 0
     ep_actor, ep_critic = 0, 0
 
-    epsilon = max(epsilon_end, epsilon_start - (episode / epsilon_decay) * (epsilon_start - epsilon_end))
+    epsilon = epsilon_end+(epsilon_start-epsilon_end)*math.exp(-1.0 * episode/30)
 
     for step in range(max_steps):
         if np.random.rand() < epsilon:
@@ -89,5 +89,5 @@ for episode in range(episodes):
     print(f"Ep {episode+1:3d} | Reward: {ep_reward/max_steps:.2f} | ε = {epsilon:.2f}")
 print(log)
 df = pd.DataFrame(log)
-df.to_csv("training_diffusion_log.csv", index=False)
+df.to_csv("training_diffusion_transformer_log.csv", index=False)
 print("Training complete. Logs saved.")
