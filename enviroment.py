@@ -143,7 +143,7 @@ class Environment:
         # Process selected IoTD (delta is one-hot encoded)
         selected_iotd = np.argmax(delta)
 
-        # Check if secure transmission is possible for selected IoTD
+        # Check if secure transmission is possible for selected IoT
         if R_sec[selected_iotd] > self.R_min and delta[selected_iotd] > 0.5:
             # Successful transmission - reset AoI and update reward
             r_P += 100
