@@ -137,6 +137,9 @@ class Environment:
 
         # Calculate secure transmission rates
         R_sec = self._calculate_secure_rates()
+        if R_sec >self.R_min:
+            r_P = 2
+            
 
         # Process selected IoTD (delta is one-hot encoded)
         selected_iotd = np.argmax(delta)
