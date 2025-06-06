@@ -129,7 +129,7 @@ class Environment:
         # Calculate energy consumption
         energy_A = self.energy(self.current_position_A, past_position_A)
         energy_B = self.energy(self.current_position_B, past_position_B)
-        total_energy = energy_A + energy_B
+        total_energy = energy_A 
         self.E += total_energy
 
         # Update AoI for all IoTDs
