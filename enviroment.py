@@ -115,10 +115,10 @@ class Environment:
             out_of_bounds = True
 
         if out_of_bounds:
-            r_P+ = -1  # Large penalty for going out of bounds
+            r_P -= 1  # Large penalty for going out of bounds
 
         else :
-           r_P += 0
+           r_P = 0
 
         # Update positions
         past_position_A = self.current_position_A
