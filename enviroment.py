@@ -118,7 +118,7 @@ class Environment:
             r_P -= 9  # Large penalty for going out of bounds
 
         else :
-           r_P+ = 9
+           r_P + = 9
 
         # Update positions
         past_position_A = self.current_position_A
