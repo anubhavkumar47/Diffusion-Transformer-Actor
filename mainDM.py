@@ -91,6 +91,7 @@ for episode in range(episodes):
     #print(f"Ep {episode+1:3d} | Avg Reward: {(ep_reward/max_steps):8.2f} | Avg Critic Loss = {(ep_critic/max_steps):.2f}  |  Avg Actor Loss = {(ep_actor/max_steps):.2f} | Avg AoI = {(ep_aoi/max_steps):.2f}")
 print(log)
 df = pd.DataFrame(log)
-df.to_csv("training_diffusion_transformer_log.csv", index=False)
+df.to_csv("training_log_diffuson_transformer_test_01.csv", index=False)
 print("Training complete. Logs saved.")
+
 
