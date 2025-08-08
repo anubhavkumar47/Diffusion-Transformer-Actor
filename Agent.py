@@ -13,8 +13,8 @@ class TD3:
         max_action,
         actor_class,
         critic_class,
-        actor_lr=1e-2,
-        critic_lr=1e-2,
+        actor_lr=1e-3,
+        critic_lr=1e-3,
         tau=0.005,
         gamma=0.99,
         policy_noise=0.2,
@@ -104,4 +104,5 @@ class TD3:
     def _soft_update(self, net, target_net):
         for param, target_param in zip(net.parameters(), target_net.parameters()):
             target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+
 
