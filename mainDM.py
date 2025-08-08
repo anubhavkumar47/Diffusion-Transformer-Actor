@@ -62,15 +62,15 @@ for episode in range(episodes):
             noise = np.random.normal(0, policy_noise, size=action_dim)
             action = np.clip(action + noise, -max_action, max_action)
             #print("action policy",action)
-
-        next_state, reward, done, energy, aoi = env.step(action)
+        action = action + np.random.normal(0,policy_noise,size=action_dim)
+        next_state, reward, done,info_env = env.step(action)
         #print("rewards",step,reward)
         replay_buffer.add(state, action, reward, next_state, float(done))
         state = next_state
 
         ep_reward += reward
-        ep_energy += energy
-        ep_aoi += aoi
+        ep_energy += info_env['energy']
+        ep_aoi += info_env['aoi']
 
         if len(replay_buffer) >= batch_size:
             info = agent.train(replay_buffer, batch_size)
@@ -86,8 +86,9 @@ for episode in range(episodes):
     log["Critic Loss"].append(ep_critic / max_steps)
     log["Energy"].append(ep_energy / max_steps)
     log["AoI"].append(ep_aoi)
+    print("Ep :- ",episode , "Reward:-",ep_reward/max_steps , "Energy:-",ep_energy/max_steps, "AoI:-",ep_aoi/max_steps )
 
-    print(f"Ep {episode+1:3d} | Avg Reward: {ep_reward/max_steps:8.2f} | ε = {epsilon:.3f}   | Avg Critic Loss = {ep_critic/max_steps:.2f}  |  Avg Actor Loss = {ep_actor/max_steps:.2f} | Avg AoI = {ep_aoi/max_steps:.2f}")
+    #print(f"Ep {episode+1:3d} | Avg Reward: {(ep_reward/max_steps):8.2f} | Avg Critic Loss = {(ep_critic/max_steps):.2f}  |  Avg Actor Loss = {(ep_actor/max_steps):.2f} | Avg AoI = {(ep_aoi/max_steps):.2f}")
 print(log)
 df = pd.DataFrame(log)
 df.to_csv("training_diffusion_transformer_log.csv", index=False)
