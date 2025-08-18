@@ -26,7 +26,7 @@ agent = TD3(
 
 replay_buffer = ReplayBuffer(state_dim, action_dim)
 
-episodes = 10000
+episodes = 1000
 max_steps = 150
 batch_size = 512
 policy_noise = 0.05
@@ -93,5 +93,6 @@ print(log)
 df = pd.DataFrame(log)
 df.to_csv("training_log_diffuson_transformer_test_01.csv", index=False)
 print("Training complete. Logs saved.")
+
 
 
